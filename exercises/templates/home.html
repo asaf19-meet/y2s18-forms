@@ -11,11 +11,10 @@
     
     {% for student in students %}
     <p>
-	    Name: <a href="{{url_for('display_student', student_id=student.student_id)}}">{{student.name}}</a><br>
-	    Class: {{student.year}}<br>
-	    Finished Lab: {{student.finished_lab}}
+	    Student's name: <a href="{{url_for('display_student', student_id=student.student_id)}}">{{student.name}}</a><br>
     </p>
     {% endfor %}
+    <p><a href="{{url_for('add_student_route')}}">add student</a></p>
 
 </body>
 </html>

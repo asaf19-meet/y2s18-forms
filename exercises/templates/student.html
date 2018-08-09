@@ -10,6 +10,7 @@
 	Student Id: {{student.student_id}}<br>
 	Class: {{student.year}}<br>
 	Finished Lab: {{student.finished_lab}}
+	<p><a href="{{url_for('edit_student_lab_status', student_id = student.student_id)}}">edit {{student.name}}'s lab status</a></p>
 	</p>
 	<form method="post" action="{{url_for('delete_student_by_id',student_id = student.student_id)}}">
 		<input type="submit" value="delete">

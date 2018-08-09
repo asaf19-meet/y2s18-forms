@@ -16,6 +16,16 @@ def delete_student_by_id(student_id):
 		delete_student_id(student_id)
 		return redirect(url_for('home'))
 
+@app.route('/edit/<int:student_id>',methods = ['GET','POST'])
+def edit_student_lab_status(student_id):
+	if request.method == 'GET':
+		return render_template('edit.html', student=query_by_id(student_id))
+	else:
+		student = query_by_id(student_id)
+		lab_status =request.form['updated_lab_status']
+		update_lab_status(student.name,lab_status)
+		return render_template('home.html')
+
 @app.route('/add',methods=['GET', 'POST'])
 def add_student_route():
 	if request.method == 'GET':
