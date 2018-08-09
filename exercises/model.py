@@ -27,7 +27,7 @@ class Student(Base):
 	def __repr__(self):
 		return ("Student Name: {}\n"
 				"Student Year: {} \n"
-				"Has Finished Lab: {}").format(
+				"Has Finished Lab: {} \n").format(
 					self.name,
 					self.year,
 					self.finished_lab)

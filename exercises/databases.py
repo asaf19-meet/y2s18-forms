@@ -3,7 +3,7 @@ from model import Base, Student
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-engine = create_engine('sqlite:///students.db')
+engine = create_engine('sqlite:///students.db', connect_args={'check_same_thread':False})
 Base.metadata.create_all(engine)
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
@@ -46,6 +46,19 @@ def delete_student(name):
 		name=name).delete()
 	session.commit()
 
+def delete_student_id(student_id):
+	"""
+	Delete all students with a certain name
+	from the database.
+	"""
+	session.query(Student).filter_by(
+		student_id = student_id).delete()
+	session.commit()
+
+def delete_all():
+	session.query(Student).delete()
+	session.commit()
+
 def update_lab_status(name, finished_lab):
 	"""
 	Update a student in the database, with 
@@ -60,3 +73,6 @@ def query_by_id(student_id):
     student = session.query(Student).filter_by(
         student_id=student_id).first()
     return student
+
+
+print(query_all())
